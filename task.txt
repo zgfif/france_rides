@@ -1,0 +1,42 @@
+Summary
+
+I want to extract historic race results from this website 
+
+https://www.zeturf.fr/fr a horse race results
+
+From 2016 to 2026 with each day comes to this way for instance for March 11, 2026
+https://www.zeturf.fr/fr/resultats-et-rapports-du-jour/2026-03-11
+
+from there for all race stadium it needs to click on it, like laval here
+https://www.zeturf.fr/fr/reunion-du-jour/2026-03-11/R1-laval#a-retenir-tab
+
+
+and then click on each race like the first one 
+https://www.zeturf.fr/fr/course-du-jour/2026-03-11/R1C1-laval-prix-du-haras-du-rocher-prix-mayenne-
+
+
+https://www.zeturf.com/fr/course-du-jour/2026-03-11/R1C1-laval-prix-du-haras-du-rocher-prix-mayenne-tourisme
+
+and then click on the following 
+"Arrivée" table and scrap all content of the table
+"Cotes" table and scrap all content of the table
+"Partants" and scrap all content of the table
+
+Output format
+yyyy_mm_dd
+
+It must done for all hippodromes for every day from 2016-01-01 to 2026-04-01
+All information must be provided in CSV files with one table for "Arrivée" with the race name, hippodrome and the date and all information scrapped
+"Cotes" with the race name, hippodrome and the date and all information scrapped
+"Partants" with the race name, hippodrome and the date and all information scrapped
+
+
+ArriveeData:
+    Place 	N° 	Chevaux (sexe/âge) écurie 	Driver 	Temps 	Réd. km.
+
+
+CotesData:
+    Simple_gagnant 	Simple_placé 	ZEshow 	ZECouillon à_14h45	En_direct
+
+PartantsData:
+	Horse   Sex/Age 	Distance 	Record / Gains	Musique	Cotes
