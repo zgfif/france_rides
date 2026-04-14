@@ -9,7 +9,7 @@ def test_arrivee_table_rows_elements(arrivee_page):
     table_container = arrivee_table_element(arrivee_page)
 
     if not table_container:
-        pytest.skip('skip page')
+        pytest.skip("skip page")
 
     got = arrivee_table_rows_elements(table_container=table_container)
 

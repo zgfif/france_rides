@@ -5,17 +5,20 @@ from app.arrivee.extract.extract_arrivee_chevaux import extract_arrivee_chevaux
 from app.arrivee.extract.extract_arrivee_driver import extract_arrivee_driver
 from app.arrivee.extract.extract_arrivee_temps import extract_arrivee_temps
 from app.arrivee.extract.extract_arrivee_red_km import extract_arrivee_red_km
+from bs4.element import Tag
 
 
+def process_arrivee_row(row: Tag) -> ArriveeData:
+    """
+    Return ArriveeData object with data from row.
+    """
+    place = extract_arrivee_place(row)
+    number = extract_arrivee_number(row)
+    chevaux = extract_arrivee_chevaux(row)
+    driver = extract_arrivee_driver(row)
+    temps = extract_arrivee_temps(row)
+    red_km = extract_arrivee_red_km(row)
 
-def extract_arrivee_data() -> ArriveeData:
-    place = extract_arrivee_place()
-    number = extract_arrivee_number()
-    chevaux = extract_arrivee_chevaux()
-    driver = extract_arrivee_driver()
-    temps = extract_arrivee_temps()
-    red_km = extract_arrivee_red_km()
-    
     return ArriveeData(
         place=place, 
         number=number, 
