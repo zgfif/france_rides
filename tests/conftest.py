@@ -1,9 +1,8 @@
 import pytest
 from bs4.element import Tag
 
-from app.arrivee.arrivee_table_element import arrivee_table_element
 from app.arrivee.arrivee_table_rows_elements import arrivee_table_rows_elements
-
+from app.load_soup import load_soup
 
 
 @pytest.fixture
@@ -18,10 +17,12 @@ def arrivee_page() -> str:
 
 @pytest.fixture
 def first_arrivee_row(arrivee_page) -> Tag:
-    table_element = arrivee_table_element(arrivee_page)
-    if not table_element:
-        pytest.skip("can not laod table element")
-    rows = arrivee_table_rows_elements(table_element)
+    arrevee_page_soup = load_soup(arrivee_page)
+    if not arrevee_page_soup:
+        pytest.skip("can not load arrevee_page_soup")
+
+    rows = arrivee_table_rows_elements(arrevee_page_soup)
+
     if not rows:
         pytest.skip("can not load rows")
     return rows[0]
