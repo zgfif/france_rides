@@ -5,8 +5,8 @@ from app.find_cell import find_cell
 
 
 
-def musique(row: WebElement) -> str:
+def at(row: WebElement) -> str:
     return find_cell(
         row=row,
-        selector=(By.CSS_SELECTOR, ".musique")
+        selector=(By.CSS_SELECTOR, ".cote-reference")
     )

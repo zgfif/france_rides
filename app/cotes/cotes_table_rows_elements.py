@@ -1,44 +1,27 @@
-import time
-
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.webdriver import WebDriver
-from selenium.webdriver.remote.webelement import WebElement
+
+from app.find_table_link import find_table_link
+from app.find_table_rows import find_table_rows
 
 
 
-
-def cotes_table_row_elements() -> list | None:
+def cotes_table_rows_elements(driver: WebDriver) -> list | None:
     """
     Return row elements from table.
     """
-    url = "https://www.zeturf.com/fr/course-du-jour/2026-03-11/R1C1-laval-prix-du-haras-du-rocher-prix-mayenne-tourisme"
+    
+    link = find_table_link(
+        driver=driver, 
+        selector=(By.ID, "tab-cotes")
+    )
 
-    driver = webdriver.Firefox()
-
-    driver.implicitly_wait(10)
-    driver.get(url)
-
-    cookies_btn = accept_cookies_btn(driver)
-    cookies_btn.click()
-    time.sleep(2)
-    link = cotes_table_link(driver)
-
+    if link is None:
+        return
+    
     link.click()
 
-    time.sleep(5)
-
-    elements = driver.find_elements(By.CSS_SELECTOR, "#DataTables_Table_0 > tbody > tr")
-
-    driver.quit()
+    elements = find_table_rows(driver)
 
     return elements
-
-
-
-def cotes_table_link(driver: WebDriver) -> WebElement:
-    return driver.find_element(By.ID, "tab-cotes")
-
-
-def accept_cookies_btn(driver: WebDriver) -> WebElement:
-    return driver.find_element(By.ID, "CybotCookiebotDialogBodyButtonAccept")

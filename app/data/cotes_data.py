@@ -4,9 +4,9 @@ from dataclasses import dataclass
 
 @dataclass
 class CotesData:
-    simple_gagnant: str
+    numero: str
+    at: str
+    en_direct: str
     simple_place: str
     zeshow: str
     zecouillon: str
-    at: str
-    en_direct: str

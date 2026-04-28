@@ -10,4 +10,4 @@ class PartantsData:
     distance: str
     record_gain: str
     musique: str
-    cotes: str
+    cote: str
