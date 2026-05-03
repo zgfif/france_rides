@@ -9,9 +9,16 @@ class Session:
 
     
     def open(self, url: str) -> None:
+        """Perform HTTP GET request."""
         self._driver.get(url)
+    
+
+    def close(self) -> None:
+        """Close session window."""
+        self._driver.close()
 
 
     @property
     def driver(self) -> WebDriver:
+        """Return driver attribute."""
         return self._driver

@@ -1,4 +1,3 @@
-from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.webdriver import WebDriver
 
@@ -11,7 +10,6 @@ def cotes_table_rows_elements(driver: WebDriver) -> list | None:
     """
     Return row elements from table.
     """
-    
     link = find_table_link(
         driver=driver, 
         selector=(By.ID, "tab-cotes")
@@ -22,6 +20,4 @@ def cotes_table_rows_elements(driver: WebDriver) -> list | None:
     
     link.click()
 
-    elements = find_table_rows(driver)
-
-    return elements
+    return find_table_rows(driver)

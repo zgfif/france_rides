@@ -1,7 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.remote.webelement import WebElement
 
-from app.find_cell import find_cell
+from app.cell_text import find_cell
 
 
 

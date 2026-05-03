@@ -8,6 +8,4 @@ def process_cotes_rows(rows: list[WebElement]) -> list[CotesData]:
     """
     Return the list of Cotes data extracted from rows list.
     """
-    return [ 
-        process_cotes_row(row) for row in rows 
-    ]
+    return [process_cotes_row(row) for row in rows]

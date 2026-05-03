@@ -1,10 +1,11 @@
 from dataclasses import dataclass
 
 
+
 @dataclass
 class ArriveeData:
     place: str
-    number: int 
+    number: str
     chevaux: str
     driver: str
     temps: str

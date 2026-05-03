@@ -1,9 +1,23 @@
-from bs4.element import Tag
+from selenium.webdriver.common.by import By
+from selenium.webdriver.firefox.webdriver import WebDriver
+
+from app.find_table_link import find_table_link
+from app.find_table_rows import find_table_rows
 
 
 
-def arrivee_table_rows_elements(table_container: Tag) -> list | None:
+def arrivee_table_rows_elements(driver: WebDriver) -> list | None:
     """
     Return row elements from table.
     """
-    return table_container.css.select("#arriveeTab > table > tbody > tr")
+    link = find_table_link(
+        driver=driver, 
+        selector=(By.ID, "tab-arrivee")
+    )
+
+    if link is None:
+        return
+    
+    link.click()
+
+    return driver.find_elements(By.CSS_SELECTOR, "#arriveeTab > table > tbody > tr")
