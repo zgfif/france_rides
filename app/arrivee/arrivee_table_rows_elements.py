@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.webdriver import WebDriver
 
 from app.find_table_link import find_table_link
-from app.find_table_rows import find_table_rows
+from app.arrivee.arrivee_rows import arrivee_rows
 
 
 
@@ -20,4 +20,4 @@ def arrivee_table_rows_elements(driver: WebDriver) -> list | None:
     
     link.click()
 
-    return driver.find_elements(By.CSS_SELECTOR, "#arriveeTab > table > tbody > tr")
+    return arrivee_rows(driver)
