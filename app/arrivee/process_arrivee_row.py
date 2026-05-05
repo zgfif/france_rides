@@ -6,6 +6,9 @@ from app.arrivee.arrivee_row_cells import arrivee_row_cells
 
 
 def process_arrivee_row(row: WebElement) -> ArriveeData:
+    """
+    Process arrivee row and return ArriveeData object.
+    """
     cells = arrivee_row_cells(row)
 
     return ArriveeData(

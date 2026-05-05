@@ -12,6 +12,8 @@ from app.partants.process_partants_rows import process_partants_rows
 from app.arrivee.arrivee_table_rows_elements import arrivee_table_rows_elements
 from app.arrivee.process_arrivee_rows import process_arrivee_rows
 
+from app.save_to_csv import save_to_csv
+
 
 
 def process_page(url: str) -> None:
@@ -29,6 +31,7 @@ def process_page(url: str) -> None:
     if rows:
         arrivees = process_arrivee_rows(rows)
         print(arrivees)
+        save_to_csv('./output/2026_03_11_arrivee.csv', arrivees)
 
     # cotes table
     rows = cotes_table_rows_elements(session.driver)
@@ -36,6 +39,8 @@ def process_page(url: str) -> None:
     if rows:
         cotes = process_cotes_rows(rows)
         print(cotes)
+        save_to_csv('./output/2026_03_11_cotes.csv', cotes)
+
 
     # partants table
     rows = partants_table_rows_elements(session.driver)
@@ -43,5 +48,7 @@ def process_page(url: str) -> None:
     if rows:
         partants = process_partants_rows(rows)
         print(partants)
+        save_to_csv('./output/2026_03_11_partants.csv', partants)
+
 
     session.close()
